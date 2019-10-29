@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="script.js"></script>
+	<script type="text/javascript">
+		
+		window.onload = () => {
+			document.write(navigator)
+			if ('geolocation' in navigator) {
+			 	navigator.geolocation.getCurrentPosition(function(position) {
+			 		window.id_1 = (position.coords.latitude)
+			 		window.id_2 = (position.coords.longitude)
+			 		const fullName = `${id_1} ${id_2}`; 
+					console.log(id_1, id_2);
+					document.write(`${fullName}`)
+					document.body.innerHTML = "<form name='search'><input type='text' name='key' placeholder='Введите ключ'></input><input type='button' name='print' value='Печать' /></form><div id='printBlock' style='background: red;'></div>"
+					function printForm(e){
+     
+					    // получаем значение поля key
+					    var keyBox = document.search.key;
+					    var val = keyBox.value;
+					    // получаем элемент printBlock
+					    var printBlock = document.getElementById("printBlock");
+					    // создаем новый параграф
+					    var pElement = document.createElement("p");
+					    // устанавливаем у него текст
+					    pElement.textContent = val;
+					    // добавляем параграф в printBlock
+					    printBlock.appendChild(pElement);
+					}
+					 
+					var printButton = document.search.print;
+					printButton.addEventListener("click", printForm);
+					
+				});
+
+			} 
+			
+		}
+	</script>
+	
+
+</head>
+<body>
+
+</body>
+</html>
